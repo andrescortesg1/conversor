@@ -1,4 +1,3 @@
-// main app
 package main
 
 import (
