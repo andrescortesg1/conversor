@@ -11,8 +11,10 @@ jobs:
           go-version: '1.26'
       - name: Clone Repository
         uses: actions/checkout@master
+        with:
+          fetch-depth: 0
       - name: Build and Test
-        run: go test -v . 
+        run: go test -v . -coverprofile=coverage.out
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@ba3875ecf642b2129de2b589510c81a8b53dbf4e
         env:
