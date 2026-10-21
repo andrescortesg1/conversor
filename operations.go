@@ -32,7 +32,7 @@ func APICheck(apiLink string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	defer r.Body.Close()
+	r.Body.Close()
 
 	if err = json.Unmarshal(responseData, &outputData); err != nil {
 		return false, err
