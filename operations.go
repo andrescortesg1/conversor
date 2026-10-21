@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
+	"log"
 	"net/http"
 	"slices"
 	"strconv"
@@ -32,7 +33,12 @@ func APICheck(apiLink string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	r.Body.Close()
+	defer func(){
+		err = r.Body.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	if err = json.Unmarshal(responseData, &outputData); err != nil {
 		return false, err
@@ -56,7 +62,12 @@ func APIGet(apiLink string, code string) (map[string]any, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer r.Body.Close()
+	defer func(){
+		err = r.Body.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	if err = json.Unmarshal(responseData, &outputData); err != nil {
 		return nil, err
