@@ -50,7 +50,7 @@ func APICheck(apiLink string) (bool, error) {
 // apiLink: link to the API call
 // code: currency code
 // returns map with currency values
-func APIGet(apiLink string, code string) (map[string]any, error) {
+func APIGet(apiLink, code string) (map[string]any, error) {
 	var outputData map[string]any
 
 	r, err := http.Get(apiLink)
