@@ -2,7 +2,7 @@ package main
 
 import (
 	"bufio"
-	"encoding/json/v2"
+	"encoding/json"
 	"errors"
 	"io"
 	"net/http"
