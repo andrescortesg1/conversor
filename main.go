@@ -36,6 +36,9 @@ func main() {
 
 	fmt.Printf("Ingrese el valor a calcular: ")
 	value, err := ReadData(nil, os.Stdin)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// get converted value via API call 
 	switch in {
@@ -49,6 +52,9 @@ func main() {
 		currencyValue, err = APIGet(copAPI, "cop")
 	default:
 		fmt.Println("Entrada invalida, terminando...")
+	}
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	convertedValue := value.(float64) * currencyValue[out.(string)].(float64)
