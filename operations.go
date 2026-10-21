@@ -75,7 +75,7 @@ func APIGet(apiLink, code string) (map[string]any, error) {
 
 	result, ok := outputData[code].(map[string]any)
 	if !ok {
-		return nil, errors.New("Invalid currency code")
+		return nil, errors.New("invalid currency code")
 	}
 
 	return result, nil
@@ -93,7 +93,7 @@ func ReadData(list []string, reader io.Reader) (any, error) {
 			return 0, err
 		}
 		if input < 0 {
-			return 0, errors.New("Invalid value, must not be negative")
+			return 0, errors.New("invalid value, must not be negative")
 		}	
 		return input, nil
 	} else { // returns string
@@ -101,14 +101,14 @@ func ReadData(list []string, reader io.Reader) (any, error) {
 			r := slices.Compare(list, supportedCurrencies)
 			return r != 0
 		}() {
-			return nil, errors.New("Unsupported currency list")
+			return nil, errors.New("unsupported currency list")
 		}
 		input, err := strconv.Atoi(scanner.Text())
 		if err != nil {
 			return "", err
 		}
 		if input > 4 || input < 1 {
-			return "", errors.New("Invalid value, must be between 1 and 4")
+			return "", errors.New("invalid value, must be between 1 and 4")
 		}
 		input = input - 1
 		return list[input], nil
