@@ -23,7 +23,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.27'
+          go-version: '1.26'
 
       # Install dependencies
       - name: Install Dependencies
@@ -32,7 +32,7 @@ jobs:
       # Run unit tests and generate coverage report
       - name: Run Tests and Generate Coverage
         run: |
-          go test ./... -coverprofile=coverage.out
+          go test . -coverprofile=coverage.out
           go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
           golangci-lint run --out-format json > golangci-lint-report.json
 
