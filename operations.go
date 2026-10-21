@@ -97,7 +97,10 @@ func ReadData(list []string, reader io.Reader) (any, error) {
 		}	
 		return input, nil
 	} else { // returns string
-		if r := slices.Compare(list, supportedCurrencies); r != 0 {
+		if func () bool {
+			r := slices.Compare(list, supportedCurrencies)
+			return r != 0
+		}() {
 			return nil, errors.New("Unsupported currency list")
 		}
 		input, err := strconv.Atoi(scanner.Text())
