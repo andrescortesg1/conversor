@@ -2,8 +2,6 @@ name: Analyze Go Code with gocyclo
 
 on:
   pull_request:
-    paths:
-      - "**/*.go"
 
 # Permissions for marocchino/sticky-pull-request-comment@v2
 permissions:
