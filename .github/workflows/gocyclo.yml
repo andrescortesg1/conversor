@@ -23,10 +23,5 @@ jobs:
           ignore_pattern: '_test|_mock|mock_|.pb.go|proto'
           over: '20'
           top: '10'
-            - name: Post Results
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          recreate: true
-          header: gocyclo Report
-          message: |
-            ${{ env.gocyclo_report }}
+      - name: Print gocyclo report
+        run: echo "${{ env.gocyclo_report }}"
