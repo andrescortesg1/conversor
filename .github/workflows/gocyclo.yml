@@ -21,7 +21,7 @@ jobs:
         uses: snkrheadz/gocyclo-analysis-reports@v0.1.1
         with:
           ignore_pattern: '_test|_mock|mock_|.pb.go|proto'
-          over: '20'
+          over: '1'
           top: '10'
       - name: Print gocyclo report
         run: echo "${{ env.gocyclo_report }}"
