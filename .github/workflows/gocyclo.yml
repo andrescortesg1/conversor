@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: gocyclo Analysis Reports
-        uses: snkrheadz/gocyclo-analysis-reports@v1
+        uses: snkrheadz/gocyclo-analysis-reports@v0.1.1
         with:
           ignore_pattern: '_test|_mock|mock_|.pb.go|proto'
           over: '20'
