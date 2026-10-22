@@ -1,0 +1,32 @@
+name: Analyze Go Code with gocyclo
+
+on:
+  pull_request:
+    paths:
+      - "**/*.go"
+
+# Permissions for marocchino/sticky-pull-request-comment@v2
+permissions:
+  pull-requests: write
+
+jobs:
+  gocyclo_analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.0.0
+
+      - name: Run gocyclo Analysis
+        uses: snkrheadz/gocyclo-analysis-reports@v1
+        id: gocyclo_analysis
+        with:
+          ignore_pattern: '_test|_mock|mock_|.pb.go|proto'
+          over: '20'
+          top: '10'
+      - name: Post Results
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          recreate: true
+          header: gocyclo Report
+          message: |
+            ${{ env.gocyclo_report }}
