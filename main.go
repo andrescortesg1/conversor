@@ -1,3 +1,4 @@
+/* app */
 package main
 
 import (
