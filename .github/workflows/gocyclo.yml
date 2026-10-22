@@ -22,6 +22,5 @@ jobs:
         with:
           ignore_pattern: '_test|_mock|mock_|.pb.go|proto'
           over: '1'
-          top: '10'
       - name: Print gocyclo report
         run: echo "${{ env.gocyclo_report }}"
