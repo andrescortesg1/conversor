@@ -9,9 +9,9 @@ on:
       - "**/*.go"
 
 permissions:
-  contents: read
+  # contents: read
   # Optional: allow read access to pull requests. Use with `only-new-issues` option.
-  # pull-requests: read
+  pull-requests: read
 
 jobs:
   gocyclo:
