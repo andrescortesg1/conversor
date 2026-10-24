@@ -18,7 +18,7 @@ jobs:
     name: Cyclomatic complexity analysis
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: gocyclo Analysis Reports
         uses: snkrheadz/gocyclo-analysis-reports@v0.1.1
         with:
