@@ -115,13 +115,14 @@ func ReadData(list []string, reader io.Reader) (any, error) {
 	}
 }
 
-func processValue(in, out ,value any) (float64, error){
+func ProcessValue(in, out ,value any) (float64, error) {
 	var currencyValue map[string]any
 	var err error
-	// to be function: 
-	// input: 
-	//  in - string
-	// get converted value via API call 
+
+	if value.(float64) < 0 {
+		return 0, errors.New("Negative currency value")
+	}
+
 	switch in {
 	case "usd":
 		currencyValue, err = APIGet(usdAPI, "usd")
@@ -138,6 +139,9 @@ func processValue(in, out ,value any) (float64, error){
 		return 0, err
 	}
 
+	if currencyValue[out.(string)] == nil {
+		return 0, errors.New("OUT string is empty")
+	}
 	convertedValue := value.(float64) * currencyValue[out.(string)].(float64)
 
 	return convertedValue, nil
