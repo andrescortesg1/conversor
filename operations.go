@@ -120,7 +120,7 @@ func ProcessValue(in, out ,value any) (float64, error) {
 	var err error
 
 	if value.(float64) < 0 {
-		return 0, errors.New("Negative currency value")
+		return 0, errors.New("negative currency value")
 	}
 
 	switch in {
@@ -133,7 +133,7 @@ func ProcessValue(in, out ,value any) (float64, error) {
 	case "cop":
 		currencyValue, err = APIGet(copAPI, "cop")
 	default:
-		return 0, errors.New("entrada invalida, terminando...")
+		return 0, errors.New("entrada invalida, terminando")
 	}
 	if err != nil {
 		return 0, err
