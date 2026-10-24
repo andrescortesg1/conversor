@@ -114,3 +114,31 @@ func ReadData(list []string, reader io.Reader) (any, error) {
 		return list[input], nil
 	}
 }
+
+func processValue(in, out ,value any) (float64, error){
+	var currencyValue map[string]any
+	var err error
+	// to be function: 
+	// input: 
+	//  in - string
+	// get converted value via API call 
+	switch in {
+	case "usd":
+		currencyValue, err = APIGet(usdAPI, "usd")
+	case "eur":
+		currencyValue, err = APIGet(eurAPI, "eur")
+	case "jpy":
+		currencyValue, err = APIGet(jpyAPI, "jpy")
+	case "cop":
+		currencyValue, err = APIGet(copAPI, "cop")
+	default:
+		return 0, errors.New("Entrada invalida, terminando...")
+	}
+	if err != nil {
+		return 0, err
+	}
+
+	convertedValue := value.(float64) * currencyValue[out.(string)].(float64)
+
+	return convertedValue, nil
+}
