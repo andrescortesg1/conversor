@@ -133,7 +133,7 @@ func ProcessValue(in, out ,value any) (float64, error) {
 	case "cop":
 		currencyValue, err = APIGet(copAPI, "cop")
 	default:
-		return 0, errors.New("Entrada invalida, terminando...")
+		return 0, errors.New("entrada invalida, terminando...")
 	}
 	if err != nil {
 		return 0, err

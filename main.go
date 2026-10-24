@@ -42,6 +42,9 @@ func main() {
 	}
 
 	convertedValue, err := ProcessValue(in, out, value)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Println(value, in, "->", convertedValue, out)
 	fmt.Println("Terminando...")
