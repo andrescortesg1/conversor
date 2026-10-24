@@ -8,9 +8,7 @@ import (
 )
 
 func main() {
-//	var currencyValue map[string]any
-//	supportedCurrencies := []string{"usd", "eur", "jpy", "cop"}	
-
+	// check API status
 	ok, err := APICheck(currencyAPI)
 	if !ok {
 		log.Fatal(err)
@@ -24,7 +22,7 @@ func main() {
 	fmt.Printf("\t4- cop: Peso Colombiano\n")
 
 	fmt.Printf("Elija la moneda de origen: ")
-	in, err := ReadData(supportedCurrencies, os.Stdin)
+	in, err := ReadData(supportedCurrencies, os.Stdin) // 
 	if err != nil {
 		log.Fatal(err)
 	}
